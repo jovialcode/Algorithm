@@ -7,7 +7,7 @@ using namespace std;
 typedef pair<int,int> pii;
 vector<vector<pii>> map(10001);
 
-pii dfs(int start){
+pii bfs(int start){
     pii tempAns;
     int visit[10001] = {0,};
     visit[start] = 1;
@@ -48,8 +48,8 @@ int main() {
         map[from].push_back({to,val});
         map[to].push_back({from,val});
     }
-    pii f = dfs(start);
-    cout << dfs(f.first).second;
+    pii f = bfs(start);
+    cout << bfs(f.first).second;
 
     return 0;
 }
