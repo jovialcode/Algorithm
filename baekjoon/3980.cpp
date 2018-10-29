@@ -3,6 +3,7 @@
 #include <vector>
 #include <queue>
 #include <cstring>
+#include <cstdio>
 
 using namespace std;
 typedef pair<int, int> P;
@@ -16,42 +17,43 @@ int main()
 {
 	int TC;scanf("%d", &TC);
 	while (TC--){
-		int player[11][11],flow[MAX_N*3][MAX_N * 3];
-		vector<vector<P>> adj(MAX_N * 3);
-		for (int i = 0; i < MAX_N; i++)
-			for (int j = 0; j < MAX_N; j++) 
-				scanf("%d", &player[i][j]);
-		//입력정리 
-		
-		
+		int flow[MAX_N * 3][MAX_N * 3], cost[MAX_N * 3][MAX_N * 3];
+		vector<vector<int>> adj(MAX_N * 3);
+
+		memset(flow, 0, sizeof(flow));
+		memset(cost, 0, sizeof(cost));
+
 		for (int i = 0; i < MAX_N; i++) {
-			adj[S].push_back({ i , 0 });
-			adj[i].push_back({ S , 0});
+			adj[MAX_N + i].push_back(T);
+			adj[T].push_back(MAX_N + i);
+			adj[S].push_back(i);
+			adj[i].push_back(S);
+
 			flow[S][i] = 1; // S-> player
+			flow[MAX_N + i][T] = 1; // position -> T
 			for (int j = 0; j < MAX_N; j++) {
-				if (player[i][j] == 0) continue;
-				adj[i].push_back({ MAX_N + j, 100 - player[i][j] });
-				adj[MAX_N + j].push_back({ i,-(100 - player[i][j]) }); // augmenting
+				int num;scanf("%d", &num);
+
+				if (num == 0) continue;
+				adj[i].push_back(MAX_N + j);
+				adj[MAX_N + j].push_back(i); // augmenting
 				flow[i][MAX_N + j] = 1; // player -> position
+				
+				cost[i][MAX_N + j] = 100 - num;
+				cost[MAX_N + j][i] = -(100 -num);
 			}
 		}
-
-		for (int j = 0; j < MAX_N; j++) {
-			adj[MAX_N + j].push_back({ T,0 });
-			adj[T].push_back({ MAX_N + j,0 });
-			flow[MAX_N + j][T] = 1; // position -> T
-		}//간선정리
-
+		//입력정리 
 	
-		int sol = 11 * 100;
+		int sol = 100 * 11;
 		while (1)
 		{
 			bool inQ[MAX_N * 3] = {0,};
 			int dist[MAX_N * 3], prev[MAX_N * 3];
 			queue<int> q;
 
-			for (int i = 0; i < MAX_N * 3; i++) dist[i] = INF;
-			memset(prev, -1, sizeof(prev));
+			fill(dist, dist + MAX_N * 3, INF);
+			fill(prev, prev + MAX_N * 3 , -1);
 
 			dist[S] = 0;
 			inQ[S] = true;
@@ -63,17 +65,16 @@ int main()
 				int here = q.front(); q.pop();
 				inQ[here] = false;
 
-				for (auto &p : adj[here])
+				for (int next : adj[here])
 				{
-					int next = p.first, add = p.second;
+					int add = cost[here][next];
 
 					if (flow[here][next] > 0 && dist[next] > dist[here] + add)
 					{
 						dist[next] = dist[here] + add;
 						prev[next] = here;
 
-						if (!inQ[next])
-						{
+						if (!inQ[next]){
 							q.push(next);
 							inQ[next] = true;
 						}
@@ -92,7 +93,7 @@ int main()
 			sol -= dist[T];
 		}
 
-		cout << sol;
+		printf("%d", sol);
 
 	}
 }
