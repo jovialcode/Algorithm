@@ -2,7 +2,6 @@
 using namespace std;
 
 int N, nums[2001];
-bool visit[2001];
 
 int main(){
 	scanf("%d", &N);
