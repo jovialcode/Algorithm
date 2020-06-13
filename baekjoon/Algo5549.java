@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class algo_5549 {
+public class Algo5549 {
     static int N, M, K;
     static String[] board;
     static int[][][] dp;

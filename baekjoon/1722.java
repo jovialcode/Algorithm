@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main{
+class Algo1722{
     static int N, M;
     static long K;
     static long[] factorial = new long[21];

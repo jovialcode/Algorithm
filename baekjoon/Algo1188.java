@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class algo_1188 {
+public class Algo1188 {
     static int N, M;
 
     public static void init() throws IOException {

@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class algo_9324 {
+public class Algo9324 {
     static int T;
 
     static void init() throws IOException {

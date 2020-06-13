@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Algo10539 {
     static int bSize;
     static ArrayList<Integer> b = new ArrayList<>();
 

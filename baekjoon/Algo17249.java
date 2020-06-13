@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+public class Algo17249 {
     private static String str;
     private final static String stopSignoal = "(^0^)";
     private final static Pattern leftPattern = Pattern.compile("@+(=)");

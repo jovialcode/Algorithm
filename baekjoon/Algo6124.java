@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class GoodGrass6124 {
+public class Algo6124 {
 
 	public static int N,M,maxSum,solR,solC;
 	public static int[][] board;
