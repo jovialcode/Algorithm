@@ -1,4 +1,4 @@
-/*
+package baekjoon;/*
  * Description :
  *   url : https://www.acmicpc.net/problem/2662
  *   type : DP
@@ -22,8 +22,8 @@ public class Algo2662 {
         try{
             StringTokenizer st = new StringTokenizer(br.readLine());
 
-            N = Integer.parseInt(st.nextToken()); // ÅõÀÚ ±Ý¾×
-            M = Integer.parseInt(st.nextToken()); // ±â¾÷ ¼ö
+            N = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¾ï¿½
+            M = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ ï¿½ï¿½
 
             nums = new int[N+1][M+1];
             dp = new int[N+1][M+1];

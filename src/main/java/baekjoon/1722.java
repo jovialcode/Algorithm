@@ -1,8 +1,11 @@
+package baekjoon;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 
 class Algo1722{
@@ -10,7 +13,7 @@ class Algo1722{
     static long K;
     static long[] factorial = new long[21];
     static boolean[] nums = new boolean[21];
-    static ArrayList<Long> arr = new ArrayList<>();
+    static List<Long> arr = new ArrayList<>();
 
     public static void init() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

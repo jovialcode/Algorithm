@@ -1,4 +1,4 @@
-/*
+package baekjoon;/*
  * Description :
  *   url : https://www.acmicpc.net/problem/5549
  *   type : Implementation

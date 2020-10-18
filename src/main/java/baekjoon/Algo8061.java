@@ -1,4 +1,4 @@
-/*
+package baekjoon;/*
  * Description :
  *   url : https://www.acmicpc.net/problem/8061
  *   type : BFS
@@ -30,10 +30,10 @@ public class Algo8061 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        N = Integer.parseInt(st.nextToken()); // Áöµµ Å©Å° °¡·Î
-        M = Integer.parseInt(st.nextToken()); // Áöµµ Å©±â ¼¼·Î
+        N = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ï¿½ Å©Å° ï¿½ï¿½ï¿½ï¿½
+        M = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        //ÀÔ·Â °ª¿¡ µû¸¥ º¯¼ö init
+        //ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ init
         initializng();
 
         for (int i = 0; i < N; i++) board[i] = br.readLine();
