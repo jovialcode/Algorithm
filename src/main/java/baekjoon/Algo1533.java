@@ -12,12 +12,14 @@ import java.util.StringTokenizer;
  * 012
  * 201
  * 120
+ *
+ * 중요 조건 board[i][j] <= 5
  * */
 public class Algo1533 {
     public static int MAX_NUM = 1000003;
     public static int N, S, E, T;
     public static int[][] board;
-    public static int[][] dp;
+    public static int[][][] dp;
 
     public Algo1533() {
         input();
@@ -35,7 +37,6 @@ public class Algo1533 {
             T = Integer.parseInt(st.nextToken());
 
             board = new int[N][N];
-            dp = new int[N][N];
 
             for(int i = 0; i < N; i++){
                 String str = bufferedReader.readLine();
@@ -43,12 +44,6 @@ public class Algo1533 {
                         .mapToInt(num -> Integer.parseInt(num))
                         .toArray();
             }
-
-//            for (int i = 0; i < N ; i++) {
-//                for (int j = 0; j <N ; j++) {
-//                    dp[i][j]  = -1;
-//                }
-//            }
 
         }catch (IOException e){
             e.printStackTrace();
@@ -60,16 +55,25 @@ public class Algo1533 {
     }
 
     public static int sol(int from, int to, int cap){
-        if(to == E - 1 && cap == 0) return 1;
+        if(cap == 0) return 1;
 
+        int left = 0;
+        int right = 0;
         for (int i = 0; i < N; i++) {
-            if(i == to) continue;
+            if(from != i){
+                int take = board[from][i];
+                if(take == 0 || cap - take < 0) continue;
 
-            int take = board[to][i];
-            if(cap >= take) {
-                dp[from][to] += (sol(from, i, cap - take) + sol(i, to, cap - take)) % MAX_NUM;
+                left += sol(from, i, cap - take) % MAX_NUM;
+            }
+
+            if(to != i){
+                int take = board[i][to];
+                if(take == 0 || cap - take < 0) continue;
+
+                right += sol(i, to, cap - take) % MAX_NUM;
             }
         }
-        return dp[from][to];
+        return Integer.min(left, right);
     }
 }
